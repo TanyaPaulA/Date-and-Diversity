@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import FestivalCard from '../components/FestivalCard';
 import CompareModal from '../components/CompareModal';
@@ -12,6 +12,14 @@ function DatePage() {
   const [showCompareModal, setShowCompareModal] = useState(false);
 
   const currentData = festivalsData[dateId];
+
+  // Load viewed festivals from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('festivalsViewed');
+    if (saved) {
+      setFestivalsViewed(JSON.parse(saved));
+    }
+  }, []);
 
   if (!currentData) {
     return (
@@ -38,7 +46,10 @@ function DatePage() {
 
   const handleFestivalView = (festivalId) => {
     if (!festivalsViewed.includes(festivalId)) {
-      setFestivalsViewed([...festivalsViewed, festivalId]);
+      const updated = [...festivalsViewed, festivalId];
+      setFestivalsViewed(updated);
+      // Save to localStorage
+      localStorage.setItem('festivalsViewed', JSON.stringify(updated));
     }
   };
 
@@ -52,6 +63,9 @@ function DatePage() {
     );
   };
 
+  const total = 15;
+  const percentage = (festivalsViewed.length / total) * 100;
+
   return (
     <div style={styles.page}>
       {/* Header for this page */}
@@ -60,10 +74,19 @@ function DatePage() {
           <button onClick={() => navigate('/')} style={styles.backButton}>
             ← Back to Calendar
           </button>
-          <h1 style={styles.title}>
-            <span style={styles.inText}>IN</span> India in a Day
-          </h1>
+          <h1 style={styles.title}>India in a Day</h1>
           <p style={styles.tagline}>One Date, Many Indias</p>
+          
+          {/* Progress Badge */}
+          <div style={styles.progressBadge}>
+            <span style={styles.badgeText}>Cultural Explorer</span>
+            <div style={styles.progressBar}>
+              <div style={{ ...styles.progressFill, width: `${percentage}%` }}></div>
+            </div>
+            <span style={styles.progressLabel}>
+              {festivalsViewed.length}/{total} Festivals Explored
+            </span>
+          </div>
         </div>
       </header>
 
@@ -124,7 +147,7 @@ const styles = {
   header: {
     background: 'linear-gradient(135deg, #FF9933 0%, #C1272D 100%)',
     color: 'white',
-    padding: '40px 20px',
+    padding: '60px 20px',
     textAlign: 'center',
     position: 'relative',
   },
@@ -153,15 +176,42 @@ const styles = {
     marginBottom: '10px',
     fontWeight: '700',
   },
-  inText: {
-    color: '#FFFFFF',
-    fontWeight: '800',
-    textTransform: 'uppercase',
-  },
   tagline: {
     fontSize: '1.2em',
     opacity: 0.95,
     fontStyle: 'italic',
+    marginBottom: '30px',
+  },
+  progressBadge: {
+    background: 'rgba(255, 255, 255, 0.2)',
+    backdropFilter: 'blur(10px)',
+    padding: '20px 30px',
+    borderRadius: '15px',
+    display: 'inline-block',
+    marginTop: '20px',
+  },
+  badgeText: {
+    fontWeight: 700,
+    fontSize: '1.1em',
+    display: 'block',
+    marginBottom: '10px',
+  },
+  progressBar: {
+    width: '300px',
+    height: '12px',
+    background: 'rgba(255, 255, 255, 0.3)',
+    borderRadius: '10px',
+    overflow: 'hidden',
+    marginBottom: '8px',
+  },
+  progressFill: {
+    height: '100%',
+    background: 'linear-gradient(90deg, #FFD700, #FFA500)',
+    transition: 'width 0.5s ease',
+  },
+  progressLabel: {
+    fontSize: '0.9em',
+    opacity: 0.9,
   },
   festivalSection: {
     padding: '50px 20px 80px',
