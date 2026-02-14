@@ -1,4 +1,4 @@
-# IN India in a Day
+# India in a Day
 
 **One Date, Many Indias**
 
