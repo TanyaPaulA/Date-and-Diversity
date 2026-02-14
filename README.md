@@ -6,7 +6,7 @@ An interactive cultural calendar that showcases how different Indian states cele
 
 ## Overview
 
-IN India in a Day addresses cultural ignorance by revealing the patterns and connections across India's diverse celebrations. Users can explore how festivals like Pongal, Lohri, and Makar Sankranti—celebrated under different names across states—actually mark the same astronomical event.
+India in a Day addresses cultural ignorance by revealing the patterns and connections across India's diverse celebrations. Users can explore how festivals like Pongal, Lohri, and Makar Sankranti—celebrated under different names across states—actually mark the same astronomical event.
 
 ## Features
 
