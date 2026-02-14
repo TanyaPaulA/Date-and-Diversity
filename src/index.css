@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+  color: #1A1A2E;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+:root {
+  --saffron: #FF9933;
+  --green: #138808;
+  --deep-red: #C1272D;
+  --cream: #FFF8F0;
+  --navy: #000080;
+  --orange: #FF6B35;
+  --dark: #1A1A2E;
+}

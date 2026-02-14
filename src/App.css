@@ -1,0 +1,89 @@
+.App {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.festival-section {
+  padding: 30px 20px 80px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  color: #000080;
+}
+
+.compare-btn {
+  background: linear-gradient(135deg, #138808, #0a5c05);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.compare-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.compare-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(19, 136, 8, 0.4);
+}
+
+.festival-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.did-you-know {
+  background: linear-gradient(135deg, rgba(255, 153, 51, 0.1), rgba(19, 136, 8, 0.1));
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 5px solid #138808;
+  margin-top: 40px;
+}
+
+.did-you-know h3 {
+  font-family: 'Playfair Display', serif;
+  color: #000080;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.did-you-know p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.05em;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .festival-grid {
+    grid-template-columns: 1fr;
+  }
+}
