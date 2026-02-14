@@ -6,7 +6,7 @@ function Header({ festivalsViewed }) {
     <header style={styles.header}>
       <div style={styles.container}>
         <h1 style={styles.title}>
-          <span style={styles.inText}>IN</span> India in a Day
+             India in a Day
         </h1>
         <p style={styles.tagline}>One Date, Many Indias</p>
         <ProgressBadge festivalsViewed={festivalsViewed} />
@@ -35,11 +35,6 @@ const styles = {
     fontSize: '3.5em',
     marginBottom: '15px',
     fontWeight: '700',
-  },
-  inText: {
-    color: '#FFFFFF',
-    fontWeight: '800',
-    textTransform: 'uppercase',
   },
   tagline: {
     fontSize: '1.3em',
